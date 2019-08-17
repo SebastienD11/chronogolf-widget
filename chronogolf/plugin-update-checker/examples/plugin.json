@@ -1,0 +1,30 @@
+{
+	"name": "Chronogolf",
+	"version": "2.0",
+	"download_url": "http://www.chronogolf.net/chronogolf-wordpress/chronogolf.zip",
+
+	"homepage": "https://pro.chronogolf.com/",
+	"requires": "4.8",
+	"tested": "4.9",
+	"last_updated": "2018-05-02 15:40:00",
+	"upgrade_notice": "",
+
+	"author": "Sebastien D. from Chronogolf",
+	"author_homepage": "https://pro.chronogolf.com/",
+
+	"sections": {
+		"description": "Add the ChronoGolf's booking widget on your website !",
+		"installation": "(Recommended) Installation instructions.",
+		"changelog": "(Recommended) Changelog. <p>This section will be displayed by default when the user clicks 'View version x.y.z details'.</p>",
+	},
+	
+	"icons" : {
+		"1x" : "http://w-shadow.com/files/external-update-example/assets/icon-128x128.png",
+		"2x" : "http://w-shadow.com/files/external-update-example/assets/icon-256x256.png"
+    },
+
+	"banners": {
+		"low": "http://w-shadow.com/files/external-update-example/assets/banner-772x250.png",
+		"high": "http://w-shadow.com/files/external-update-example/assets/banner-1544x500.png"
+	},
+}
