@@ -3,7 +3,7 @@
  * Plugin Name: ChronoGolf
  * Plugin URI: http://pro.chronogolf.com/
  * Description: Add the ChronoGolf's booking widget on your website !
- * Version: 2.6
+ * Version: 3.0
  * Author: ChronoGolf
  * Author URI: http://pro.chronogolf.com/
  * License: GPL2
@@ -56,7 +56,10 @@ class Chronogolf {
 		 
 		// Register javascript
 		add_action('admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+		add_action('in_admin_footer', array( $this, 'enqueue_admin_script_footer'));
 		add_action('wp_footer',  array( $this, 'enqueue_footer_js' ) );
+
+		add_action( 'wp_head', array( $this, 'styleFrontend'));
 		
 		 
 		// Get registered option
@@ -106,9 +109,21 @@ class Chronogolf {
     /**
 	 * Function that will add script file.
 	 */
+	public function enqueue_admin_script_footer(){
+		// Intercom Only in Admin
+		$user_info = get_userdata(get_current_user_id());
+		?>
+			<script>
+			window.intercomSettings = {
+				name: "<?php echo $user_info->user_login; ?>",
+				app_id: "a4ee4ab2660a081ee070bbbca07f45627795972f",
+			};
+			</script>
+			<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/a4ee4ab2660a081ee070bbbca07f45627795972f';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+		<?php
+	}
 	public function enqueue_admin_script($hook) { 
-		
-		global $page_hook_suffix;
+				global $page_hook_suffix;
 		if( $hook != $page_hook_suffix )
 			return; 
 		 
@@ -119,20 +134,23 @@ class Chronogolf {
 		//wp_enqueue_style( 'chronogolf_css', plugins_url( 'css/chronogolf.css', __FILE__ ) );		
 		// Css rules for Color Picker
 		wp_enqueue_style( 'wp-color-picker' );
+	}
 
-		// Intercom Only in Admin
-		$user_info = get_userdata(1);
-		?>
-			<script>
-			window.intercomSettings = {
-			app_id: "a4ee4ab2660a081ee070bbbca07f45627795972f",
-			email: <?php $user_info->user_email; ?>, // Email address
-			};
-			</script>
-
-			<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/a4ee4ab2660a081ee070bbbca07f45627795972f';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
-		<?php
-
+	public function styleFrontend(){
+		
+		$widget_css = "
+		<style type='text/css'>
+			@media only screen and (max-width: 680px){
+				body{padding-bottom: 50px;}
+				body .chrono-container .chrono-bookingbutton{
+					width: 100%;
+					left: 0;
+					bottom: 0;
+					border-radius: 0;
+				}
+			}
+		</style>";
+		echo $widget_css;
 	}
 
 
@@ -291,7 +309,7 @@ class Chronogolf {
 	public function display_page() { 
 		?>
 		<div class="wrap wrap-chronogolf">
-			<h2>ChronoGolf <small>v2.2</small></h2>
+			<h2>ChronoGolf <small>v3.0</small></h2>
 			<form method="post" action="options.php" id="form-options">
 			<h3>Options</h3>
 			<?php 
