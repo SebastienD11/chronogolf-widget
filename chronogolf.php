@@ -56,7 +56,7 @@ class Chronogolf {
 		 
 		// Register javascript
 		add_action('admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
-		add_action('in_admin_footer', array( $this, 'enqueue_admin_script_footer'));
+		// add_action('in_admin_footer', array( $this, 'enqueue_admin_script_footer'));
 		add_action('wp_footer',  array( $this, 'enqueue_footer_js' ) );
 
 		add_action( 'wp_head', array( $this, 'styleFrontend'));
