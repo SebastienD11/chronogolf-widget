@@ -3,7 +3,7 @@
  * Plugin Name: ChronoGolf
  * Plugin URI: http://pro.chronogolf.com/
  * Description: Add the ChronoGolf's booking widget on your website !
- * Version: 4.0
+ * Version: 4.1
  * Author: ChronoGolf
  * Author URI: http://pro.chronogolf.com/
  * License: GPL2
@@ -320,7 +320,7 @@ class Chronogolf {
 	public function display_page() { 
 		?>
 		<div class="wrap wrap-chronogolf">
-			<h2>ChronoGolf <small>v4.0</small></h2>
+			<h2>ChronoGolf <small>v4.1</small></h2>
 			<form method="post" action="options.php" id="form-options">
 			<h3>Options</h3>
 			<?php 
