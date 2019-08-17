@@ -3,7 +3,7 @@
  * Plugin Name: ChronoGolf
  * Plugin URI: http://pro.chronogolf.com/
  * Description: Add the ChronoGolf's booking widget on your website !
- * Version: 3.0
+ * Version: 3.2
  * Author: ChronoGolf
  * Author URI: http://pro.chronogolf.com/
  * License: GPL2
@@ -72,11 +72,22 @@ class Chronogolf {
 		add_action( 'admin_init', array( $this, 'chronOverride'  ) );
 
 		require 'plugin-update-checker/plugin-update-checker.php';
+		// $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+		// 	'http://www.chronogolf.net/chronogolf-wordpress/plugin.json',
+		// 	__FILE__, //Full path to the main plugin file or functions.php.
+		// 	'chronogolf'
+		// );
 		$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-			'http://www.chronogolf.net/chronogolf-wordpress/plugin.json',
-			__FILE__, //Full path to the main plugin file or functions.php.
+			'https://github.com/SebastienD11/chronogolf-widget/',
+			__FILE__,
 			'chronogolf'
 		);
+
+		//Optional: If you're using a private repository, specify the access token like this:
+		$myUpdateChecker->setAuthentication('b8f697b06f38041c139ef4bac95f925019e2ff7b');
+
+		//Optional: Set the branch that contains the stable release.
+		$myUpdateChecker->setBranch('master');
 		
 	}
   
