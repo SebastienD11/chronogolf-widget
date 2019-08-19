@@ -86,8 +86,6 @@ class Chronogolf {
 		//Optional: If you're using a private repository, specify the access token like this:
 		$myUpdateChecker->setAuthentication('b8f697b06f38041c139ef4bac95f925019e2ff7b');
 
-		//Optional: Set the branch that contains the stable release.
-		$myUpdateChecker->setBranch('master');
 		
 	}
   
