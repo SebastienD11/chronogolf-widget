@@ -3,7 +3,7 @@
  * Plugin Name: ChronoGolf
  * Plugin URI: http://pro.chronogolf.com/
  * Description: Add the ChronoGolf's booking widget on your website !
- * Version: 4.2
+ * Version: 5.0
  * Author: ChronoGolf
  * Author URI: http://pro.chronogolf.com/
  * License: GPL2
@@ -56,7 +56,7 @@ class Chronogolf {
 		 
 		// Register javascript
 		add_action('admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
-		// add_action('in_admin_footer', array( $this, 'enqueue_admin_script_footer'));
+		add_action('in_admin_footer', array( $this, 'enqueue_admin_script_footer'));
 		add_action('wp_footer',  array( $this, 'enqueue_footer_js' ) );
 
 		add_action( 'wp_head', array( $this, 'styleFrontend'));
@@ -318,7 +318,7 @@ class Chronogolf {
 	public function display_page() { 
 		?>
 		<div class="wrap wrap-chronogolf">
-			<h2>ChronoGolf <small>v4.2</small></h2>
+			<h2>ChronoGolf <small>v5.0</small></h2>
 			<form method="post" action="options.php" id="form-options">
 			<h3>Options</h3>
 			<?php 
